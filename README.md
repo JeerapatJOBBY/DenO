@@ -25,8 +25,11 @@
 - OLED 0.91” Display I^2C
 
 ### โครงสร้างพื้นฐาน
-![flowchart picture][flowchart]
+![diagram picture][diagram]
 
-[flowchart]:https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Flowchart.png "flowchart"
+[diagram]: https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Diagram.png"flowchart"
 
 ### ระบบการทำงาน
+![flowchart picture][flowchart]
+
+[flowchart]:https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Flowchart.png"flowchart"
