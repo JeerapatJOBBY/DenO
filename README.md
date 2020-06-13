@@ -24,4 +24,8 @@
 - Passive Buzzer
 - OLED 0.91” Display I^2C
 
+### โครงสร้างพื้นฐาน
+
+
 ### ระบบการทำงาน
+[flowchart]:  https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Flowchart%20DEN-O%20(2).png?raw=true
