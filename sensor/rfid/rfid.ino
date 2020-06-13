@@ -33,15 +33,12 @@ void loop() {
   }
 
   String strID = "";
-  for (byte i = 0; i < 4; i++) {
+  for (byte i = 0; i < 4; i++) 
+  {
     strID +=
-    (rfid.uid.uidByte[i] < 0x10 ? "0" : "") +
-    String(rfid.uid.uidByte[i], HEX) +
-    (i!=3 ? ":" : "");
+    (rfid.uid.uidByte[i] < 0x10 ? "0" : "") + String(rfid.uid.uidByte[i], HEX) + (i!=3 ? ":" : "");
   }
   strID.toUpperCase();
-
-
 
 
   Serial.print("Tap card key: ");
