@@ -16,12 +16,21 @@
 - 4X4 Keypad
 
 ### Behavior
-1.
-2.
-3.
+1. กดปุ่มเพื่อเปิดการทำงาน
+2. กดเลขใน keypad เพื่อเลือกฟอร์มต่างๆ
+3. สแกนบัตรบน rffid reader
+4. มีเสียงออกมาตามฟอร์มนั้นๆ
 
 ### Manipulation Module
 - Passive Buzzer
 - OLED 0.91” Display I^2C
 
+### โครงสร้างพื้นฐาน
+![diagram picture][diagram]
+
+[diagram]: https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Diagram.png "diagram"
+
 ### ระบบการทำงาน
+![flowchart picture][flowchart]
+
+[flowchart]:https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Flowchart.png "flowchart"
