@@ -28,4 +28,5 @@
 
 
 ### ระบบการทำงาน
-[flowchart]:  https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Flowchart%20DEN-O%20(2).png?raw=true
+![flowchart picture][flowchart]
+[flowchart]:  https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Flowchart%20DEN-O%20(2).png?raw=true "flowchart"
