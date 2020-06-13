@@ -27,9 +27,9 @@
 ### โครงสร้างพื้นฐาน
 ![diagram picture][diagram]
 
-[diagram]: https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Diagram.png"flowchart"
+[diagram]: https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Diagram.png "diagram"
 
 ### ระบบการทำงาน
 ![flowchart picture][flowchart]
 
-[flowchart]:https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Flowchart.png"flowchart"
+[flowchart]:https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Flowchart.png "flowchart"
