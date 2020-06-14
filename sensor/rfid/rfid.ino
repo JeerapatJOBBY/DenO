@@ -18,7 +18,7 @@ void setup() {
 
 void loop() {
   if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial())
-    return;
+    return; 
 
   // Serial.print(F("PICC type: "));
   MFRC522::PICC_Type piccType = rfid.PICC_GetType(rfid.uid.sak);
