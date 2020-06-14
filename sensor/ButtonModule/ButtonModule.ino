@@ -14,7 +14,8 @@ void setup()
 void loop(){
     while (button3.pressed()) 
     {
-    Serial.println("HENSHIN!!");
+    Serial.println("Hello");
     }
+    Serial.println("NOTHING");
 
 }

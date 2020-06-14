@@ -5,7 +5,7 @@ void setup(){
 
 void loop(){
     while (digitalRead(2)== 0) {
-    tone(8,1000,100);
+    tone(8,100,1000);
     }
-    Serial.println("NO TONE");
+    Serial.println("NOTHING");
 }
