@@ -7,4 +7,5 @@ void loop(){
     while (digitalRead(2)== 0) {
     tone(8,1000,100);
     }
+    Serial.println("NO TONE");
 }
