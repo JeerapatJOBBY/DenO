@@ -46,12 +46,12 @@ void loop() {
 
   if (strID == "04:AA:89:2B") 
   {
-    digitalWrite(8, 1);
+    tone(8,100);
   }
 
   if (strID == "69:C1:A0:C2")
   {
-    digitalWrite(8, 0);
+    noTone(8);
   }
 
   rfid.PICC_HaltA();
