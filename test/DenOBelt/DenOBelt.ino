@@ -46,7 +46,7 @@ void setup(){
 }
 
 
-int Buttonnn = 0,NumberInKey = 0,Belt = 0,TIME=0,TimeTone = 0; //กำหนดตัวแปรในการดำเนินงาน
+int Buttonnn = 0,NumberInKey = 0,FullCharge = 0,TIME=0,TimeTone = 0; //กำหนดตัวแปรในการดำเนินงาน
 void loop()
 
 {
@@ -94,7 +94,7 @@ void loop()
     if (key == '4'){
     NumberInKey=4;
     }
-
+       
 
     //เริ่มการทำงานพอร์มที่ 1 sword form
     if (Buttonnn == 0)
@@ -103,7 +103,7 @@ void loop()
     }
     if (Buttonnn==1 && NumberInKey==1)
     {
-        if (NumberInKey == 1)
+        if (NumberInKey == 1 )
         {
         oled.clearDisplay();
         oled.setCursor(10,10);
@@ -111,7 +111,7 @@ void loop()
         oled.setTextSize(2);
         oled.println("Scan card");
         oled.display();
-        }
+        
 
         if ( TimeTone ==0 & cuurrentTime - lasttimeStrateChange >= 200){
         tone(8,1000,400);
@@ -153,6 +153,8 @@ void loop()
         lasttimeStrateChange = cuurrentTime;
         TimeTone = 0;
         }
+
+        }
             //กำหนดค่า RFID
 
             if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial())
@@ -164,6 +166,7 @@ void loop()
                         strID +=(rfid.uid.uidByte[i] < 0x10 ? "0" : "") + String(rfid.uid.uidByte[i], HEX) + (i!=3 ? ":" : "");
                     }
             strID.toUpperCase();
+    
           
     if (strID == "04:AA:89:2B") 
     {
@@ -191,6 +194,7 @@ void loop()
     oled.setTextColor(SSD1306_WHITE);
     oled.setTextSize(2);
     oled.print("SWORD FORM");
+    tone(8,100,1000);
 
     oled.setCursor(x,18);
     oled.setTextColor(SSD1306_WHITE);
@@ -198,24 +202,16 @@ void loop()
     oled.print("SWORD FORM");
     
     oled.display();
+
+    tone(8,x+100,1000);
     }
 
-    if (strID == "69:C1:A0:C2") {
-    
-    delay(250);
-    tone(8,500,50);
-    delay(100);
-    tone(8,1000,100);
-
-    
-
-    }
-
-   
-
-
+    FullCharge=1;
     NumberInKey=0;
     }
+
+
+
 
   rfid.PICC_HaltA();
   rfid.PCD_StopCrypto1();
@@ -229,6 +225,15 @@ void loop()
     }
     if (Buttonnn==1 && NumberInKey==2)
     {
+        if (NumberInKey == 2)
+        {
+        oled.clearDisplay();
+        oled.setCursor(10,10);
+        oled.setTextColor(SSD1306_WHITE);
+        oled.setTextSize(2);
+        oled.println("Scan card");
+        oled.display();
+
         if ( TimeTone ==0 & cuurrentTime - lasttimeStrateChange >= 200){
         tone(8,1600,400);
         lasttimeStrateChange = cuurrentTime;
@@ -269,6 +274,7 @@ void loop()
         lasttimeStrateChange = cuurrentTime;
         TimeTone = 0;
         }
+        }
 
             //กำหนดค่า RFID
 
@@ -282,7 +288,7 @@ void loop()
                     }
             strID.toUpperCase();
             
-  if (strID == "04:AA:89:2B") 
+    if (strID == "04:AA:89:2B") 
     {
     noTone(8);
 
@@ -291,19 +297,39 @@ void loop()
     delay(100);
     tone(8,1000,100);
 
-    for(int x = 1 ;x < 128;x++)
-    {
+
     oled.clearDisplay();
-    oled.setCursor(x,10);
+    oled.setCursor(0,10);
     oled.setTextColor(SSD1306_WHITE);
     oled.setTextSize(3);
     oled.println("HENSHIN");
+    oled.display();
+
+    delay(2000);
+
+    for(int x = 1 ;x <= 150;x++)
+    {
+    oled.clearDisplay();
+    oled.setCursor(x-150,18);
+    oled.setTextColor(SSD1306_WHITE);
+    oled.setTextSize(2);
+    oled.print("SPEAR FORM");
+    tone(8,100,1000);
+
+    oled.setCursor(x,18);
+    oled.setTextColor(SSD1306_WHITE);
+    oled.setTextSize(2);
+    oled.print("SPEAR FORM");
     
     oled.display();
-    } 
 
+    tone(8,x+100,1000);
+    }
+
+    FullCharge=1;
     NumberInKey=0;
     }
+    
 
     rfid.PICC_HaltA();
     rfid.PCD_StopCrypto1();
@@ -316,6 +342,15 @@ void loop()
     }
     if (Buttonnn==1 && NumberInKey==3)
     {
+        if (NumberInKey == 3)
+        {
+        oled.clearDisplay();
+        oled.setCursor(10,10);
+        oled.setTextColor(SSD1306_WHITE);
+        oled.setTextSize(2);
+        oled.println("Scan card");
+        oled.display();
+        
         if ( TimeTone ==0 & cuurrentTime - lasttimeStrateChange >= 300){
         tone(8,600,400);
         lasttimeStrateChange = cuurrentTime;
@@ -356,6 +391,7 @@ void loop()
         lasttimeStrateChange = cuurrentTime;
         TimeTone = 0;
         }
+        }
             //กำหนดค่า RFID
 
             if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial())
@@ -368,7 +404,7 @@ void loop()
                     }
             strID.toUpperCase();
           
-  if (strID == "04:AA:89:2B") 
+    if (strID == "04:AA:89:2B") 
     {
     noTone(8);
 
@@ -377,17 +413,36 @@ void loop()
     delay(100);
     tone(8,1000,100);
 
-    for(int x = 1 ;x < 128;x++)
-    {
+
     oled.clearDisplay();
-    oled.setCursor(x,10);
+    oled.setCursor(0,10);
     oled.setTextColor(SSD1306_WHITE);
     oled.setTextSize(3);
     oled.println("HENSHIN");
+    oled.display();
+
+    delay(2000);
+
+    for(int x = 1 ;x <= 150;x++)
+    {
+    oled.clearDisplay();
+    oled.setCursor(x-150,18);
+    oled.setTextColor(SSD1306_WHITE);
+    oled.setTextSize(2);
+    oled.print("AXE FORM");
+    tone(8,100,1000);
+
+    oled.setCursor(x,18);
+    oled.setTextColor(SSD1306_WHITE);
+    oled.setTextSize(2);
+    oled.print("AXE FORM");
     
     oled.display();
-    } 
 
+    tone(8,x+100,1000);
+    }
+
+    FullCharge=1;
     NumberInKey=0;
     }
 
@@ -402,6 +457,15 @@ void loop()
     }
     if (Buttonnn==1 && NumberInKey==4)
     {
+        if(NumberInKey == 4)
+        {
+        oled.clearDisplay();
+        oled.setCursor(10,10);
+        oled.setTextColor(SSD1306_WHITE);
+        oled.setTextSize(2);
+        oled.println("Scan card");
+        oled.display();
+
         if ( TimeTone ==0 & cuurrentTime - lasttimeStrateChange >= 150){
         tone(8,2000,400);
         lasttimeStrateChange = cuurrentTime;
@@ -442,6 +506,7 @@ void loop()
         lasttimeStrateChange = cuurrentTime;
         TimeTone = 0;
         }
+        }
             //กำหนดค่า RFID
 
             if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial())
@@ -453,8 +518,8 @@ void loop()
                         strID +=(rfid.uid.uidByte[i] < 0x10 ? "0" : "") + String(rfid.uid.uidByte[i], HEX) + (i!=3 ? ":" : "");
                     }
             strID.toUpperCase();
-          
-  if (strID == "04:AA:89:2B") 
+
+    if (strID == "04:AA:89:2B") 
     {
     noTone(8);
 
@@ -463,22 +528,84 @@ void loop()
     delay(100);
     tone(8,1000,100);
 
-    for(int x = 1 ;x < 128;x++)
-    {
+
     oled.clearDisplay();
-    oled.setCursor(x,10);
+    oled.setCursor(0,10);
     oled.setTextColor(SSD1306_WHITE);
     oled.setTextSize(3);
     oled.println("HENSHIN");
+    oled.display();
+
+    delay(2000);
+
+    for(int x = 1 ;x <= 150;x++)
+    {
+    oled.clearDisplay();
+    oled.setCursor(x-150,18);
+    oled.setTextColor(SSD1306_WHITE);
+    oled.setTextSize(2);
+    oled.print("GUN FORM");
+    tone(8,100,1000);
+
+    oled.setCursor(x,18);
+    oled.setTextColor(SSD1306_WHITE);
+    oled.setTextSize(2);
+    oled.print("GUN FORM");
     
     oled.display();
-    } 
 
+    tone(8,x+100,1000);
+    }
+
+    FullCharge=1;
     NumberInKey=0;
     }
 
   rfid.PICC_HaltA();
   rfid.PCD_StopCrypto1();
     }//จบพอร์มที่ 4
+
+
+    //ใช้ Fullchange
+    if (FullCharge == 1)
+    {
+        if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial())
+                return; 
+
+                String strID = "";
+                for (byte i = 0; i < 4; i++) 
+                    {
+                        strID +=(rfid.uid.uidByte[i] < 0x10 ? "0" : "") + String(rfid.uid.uidByte[i], HEX) + (i!=3 ? ":" : "");
+                    }
+            strID.toUpperCase();
+
+        if (strID == "69:C1:A0:C2")
+        {
+            delay(250);
+            tone(8,500,50);
+            delay(100);
+            tone(8,1000,100);
+
+        for(int x = 1 ;x <= 150;x++)
+        {
+            oled.clearDisplay();
+            oled.setCursor(x-150,18);
+            oled.setTextColor(SSD1306_WHITE);
+            oled.setTextSize(2);
+            oled.print("FULLCHANGE");
+
+            oled.setCursor(x,18);
+            oled.setTextColor(SSD1306_WHITE);
+            oled.setTextSize(2);
+            oled.print("FULLCHANGE");
+    
+            oled.display();
+
+            tone(8,x*10,1000);
+        }
+
+            FullCharge = 0;
+        }
+    }
 
 }
