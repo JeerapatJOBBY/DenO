@@ -34,3 +34,9 @@
 ![flowchart picture][flowchart]
 
 [flowchart]:https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Flowchart.png "flowchart"
+
+### การต่อสายไฟ
+![Project picture][Project]
+
+[Project]: https://github.com/JeerapatJOBBY/DenO/blob/master/Image/Project.png "Project"
+
