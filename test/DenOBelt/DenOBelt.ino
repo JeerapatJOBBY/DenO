@@ -46,7 +46,7 @@ void setup(){
 }
 
 
-int Buttonnn = 0,NumberInKey = 0,FullCharge = 0,TIME=0,TimeTone = 0; //กำหนดตัวแปรในการดำเนินงาน
+int Buttonnn = 0,NumberInKey = 0,FullCharge = 0,TIME=0,TimeTone = 0,platfrom=0; //กำหนดตัวแปรในการดำเนินงาน
 void loop()
 
 {
@@ -79,6 +79,7 @@ void loop()
     oled.display();
         TIME=0;
         Buttonnn=0;
+        platfrom =0;
     }
 
     //กำหนดค่าตอนกดปุ่มกับตอนกด keypad
@@ -94,7 +95,6 @@ void loop()
     if (key == '4'){
     NumberInKey=4;
     }
-       
 
     //เริ่มการทำงานพอร์มที่ 1 sword form
     if (Buttonnn == 0)
@@ -208,13 +208,14 @@ void loop()
 
     FullCharge=1;
     NumberInKey=0;
+    platfrom =1;
     }
 
 
 
 
-  rfid.PICC_HaltA();
-  rfid.PCD_StopCrypto1();
+    rfid.PICC_HaltA();
+    rfid.PCD_StopCrypto1();
     }//จบพอร์มที่ 1
 
 
@@ -313,13 +314,13 @@ void loop()
     oled.setCursor(x-150,18);
     oled.setTextColor(SSD1306_WHITE);
     oled.setTextSize(2);
-    oled.print("SPEAR FORM");
+    oled.print("ROD FORM");
     tone(8,100,1000);
 
     oled.setCursor(x,18);
     oled.setTextColor(SSD1306_WHITE);
     oled.setTextSize(2);
-    oled.print("SPEAR FORM");
+    oled.print("ROD FORM");
     
     oled.display();
 
@@ -328,6 +329,7 @@ void loop()
 
     FullCharge=1;
     NumberInKey=0;
+    platfrom =1;
     }
     
 
@@ -351,13 +353,13 @@ void loop()
         oled.println("Scan card");
         oled.display();
         
-        if ( TimeTone ==0 & cuurrentTime - lasttimeStrateChange >= 300){
-        tone(8,600,400);
+        if ( TimeTone ==0 & cuurrentTime - lasttimeStrateChange >= 500){
+        tone(8,300,400);
         lasttimeStrateChange = cuurrentTime;
         TimeTone = 1;
         }
         if ( TimeTone ==1 & cuurrentTime - lasttimeStrateChange >= 100){
-        tone(8,100,400);
+        tone(8,300,400);
         lasttimeStrateChange = cuurrentTime;
         TimeTone = 2;
         }
@@ -372,7 +374,7 @@ void loop()
         TimeTone = 4;
         }
         if ( TimeTone ==4 & cuurrentTime - lasttimeStrateChange >= 500){
-        tone(8,600,400);
+        tone(8,300,400);
         lasttimeStrateChange = cuurrentTime;
         TimeTone = 5;
         }
@@ -387,7 +389,7 @@ void loop()
         TimeTone = 7;
         }
         if ( TimeTone ==7 & cuurrentTime - lasttimeStrateChange >= 200){
-        tone(8,600,400);
+        tone(8,300,400);
         lasttimeStrateChange = cuurrentTime;
         TimeTone = 0;
         }
@@ -444,6 +446,7 @@ void loop()
 
     FullCharge=1;
     NumberInKey=0;
+    platfrom =1;
     }
 
   rfid.PICC_HaltA();
@@ -559,12 +562,80 @@ void loop()
 
     FullCharge=1;
     NumberInKey=0;
+    platfrom =1;
     }
 
   rfid.PICC_HaltA();
   rfid.PCD_StopCrypto1();
     }//จบพอร์มที่ 4
 
+     //เริ่มการทำงานพอร์มที่ 0 plat form
+    if (Buttonnn == 0)
+    {
+        NumberInKey=0;
+    }
+    if (Buttonnn==1 && platfrom !=1 )
+    {
+            //กำหนดค่า RFID
+
+            if (!rfid.PICC_IsNewCardPresent() || !rfid.PICC_ReadCardSerial())
+                return; 
+
+                String strID = "";
+                for (byte i = 0; i < 4; i++) 
+                    {
+                        strID +=(rfid.uid.uidByte[i] < 0x10 ? "0" : "") + String(rfid.uid.uidByte[i], HEX) + (i!=3 ? ":" : "");
+                    }
+            strID.toUpperCase();
+    
+          
+    if (strID == "04:AA:89:2B") 
+    {
+    noTone(8);
+
+    delay(250);
+    tone(8,500,50);
+    delay(100);
+    tone(8,1000,100);
+
+
+    oled.clearDisplay();
+    oled.setCursor(0,10);
+    oled.setTextColor(SSD1306_WHITE);
+    oled.setTextSize(3);
+    oled.println("HENSHIN");
+    oled.display();
+
+    delay(2000);
+
+    for(int x = 1 ;x <= 150;x++)
+    {
+    oled.clearDisplay();
+    oled.setCursor(x-150,18);
+    oled.setTextColor(SSD1306_WHITE);
+    oled.setTextSize(2);
+    oled.print("PLAT FORM");
+    tone(8,10,1000);
+
+    oled.setCursor(x,18);
+    oled.setTextColor(SSD1306_WHITE);
+    oled.setTextSize(2);
+    oled.print("PLAT FORM");
+    
+    oled.display();
+
+    }
+
+    NumberInKey=0;
+    platfrom =1;
+    
+    }
+    rfid.PICC_HaltA();
+    rfid.PCD_StopCrypto1();
+    }//จบพอร์มที่ 0
+
+    
+       
 
     //ใช้ Fullchange
     if (FullCharge == 1)
@@ -585,6 +656,7 @@ void loop()
             tone(8,500,50);
             delay(100);
             tone(8,1000,100);
+            delay(250);
 
         for(int x = 1 ;x <= 150;x++)
         {
